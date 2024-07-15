@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IR Remote Control</title>
+</head>
+<body>
+  <h1>Sharp Air Conditioner Control</h1>
+  <button onclick="sendIRCode('0x20DF10EF')">Power ON/OFF</button>
+  <button onclick="sendIRCode('0x20DF40BF')">Temp Up</button>
+  <button onclick="sendIRCode('0x20DFC03F')">Temp Down</button>
+
+  <script>
+    function sendIRCode(code) {
+      fetch(`http://192.168.191.194/?code=${code}`)
+        .then(response => response.text())
+        .then(data => console.log(data));
+    }
+  </script>
+</body>
+</html>
